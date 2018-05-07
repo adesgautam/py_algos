@@ -9,7 +9,7 @@ def insertion_sort(arr):
 		while i>=0 and arr[i]>key:
 			arr[i+1]=arr[i]
 			i=i-1
-			print(arr)
+			# print(arr)
 		arr[i+1] = key
 	return arr
 
