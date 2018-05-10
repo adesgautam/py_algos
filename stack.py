@@ -12,7 +12,6 @@ class Stack:
 		if self.isEmpty():
 			print("Stack is empty !!!")
 		else:
-			# print(self.head)
 			self.items.pop(self.head)
 			head-=1
 
