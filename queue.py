@@ -13,8 +13,9 @@ class Queue:
 		if self.isEmpty():
 			print("Queue is empty !!!")
 		else:
-			print(self.head)
+			x = self.items[self.head]
 			self.items.pop(self.head)
+			return x
 
 	def isEmpty(self):
 		return self.head == self.tail
@@ -34,12 +35,14 @@ print(q.size())
 print(q.isEmpty())
 
 # remove
-q.dequeue()
+x = q.dequeue()
+print(x)
 # check
 print(q.items, q.head, q.tail)
 
 # remove
-q.dequeue()
+x = q.dequeue()
+print(x)
 # check
 print(q.items, q.head, q.tail)
 	

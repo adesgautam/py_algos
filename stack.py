@@ -14,7 +14,7 @@ class Stack:
 		else:
 			# print(self.head)
 			self.items.pop(self.head)
-			head=-1
+			head-=1
 
 	def size(self):
 		return len(self.items)
