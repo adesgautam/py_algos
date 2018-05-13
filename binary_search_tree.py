@@ -1,12 +1,14 @@
 
+# Structure of the BST Node
 class Node:
 	def __init__(self, key):
 		self.left = None
 		self.right = None
 		self.val = key
 
+# Insert node in BST
 def insert(root, node):
-	if root == None:
+	if root is None:
 		root = node
 
 	if root.val < node.val:
@@ -20,8 +22,9 @@ def insert(root, node):
 		else:
 			insert(root.left, node)
 
+# Search node having x as value
 def search_x(root, x):
-	if not root:
+	if root is None:
 		return "value not found"
 	if root.val == x:
 		return "value found"
@@ -30,12 +33,14 @@ def search_x(root, x):
 	else:
 		return search_x(root.right, x)
 
+# For delete function (find inorder successor)
 def minnode(root):
 	current = root
 	while(current.left is not None):
 		current = current.left
 	return current
 
+# Delete node having x as value
 def delete(root, x):
 	if root is None:
 		return root
@@ -60,12 +65,14 @@ def delete(root, x):
 
 	return root
 
+# For height function
 def max(a, b):
 	if a>b:
 		return a
 	else:
 		return b
 
+# Find height of BST
 def height(root):
 	if root is None:
 		return 0
@@ -73,18 +80,48 @@ def height(root):
 	rightheight = height(root.right)
 	return max(leftheight, rightheight)+1
 
+# For isBST function
+def isSmaller(root, x):
+	if root is None:
+		return True
+	if root.val <= x and isSmaller(root.left,x) and isSmaller(root.right,x):
+		return True
+	else:
+		return False
+
+# For isBST function
+def isGreater(root, x):
+	if root is None:
+		return True
+	if root.val > x and isGreater(root.left,x) and isGreater(root.right,x):
+		return True
+	else:
+		return False
+
+# Check is binary tree is BST
+def isBST(root):
+	if root is None:
+		return True
+	if isSmaller(root.left, root.val) and isGreater(root.right, root.val) and isBST(root.left) and isBST(root.right):
+		return True
+	else:
+		return False
+
+# Inorder Traversal
 def inorder(root):
 	if root:
 		inorder(root.left)
 		print(root.val, end=" ")
 		inorder(root.right)
 
+# Preorder Traversal
 def preorder(root):
 	if root:
 		print(root.val, end=" ")
 		preorder(root.left)
 		preorder(root.right)
 
+# Postorder Traversal
 def postorder(root):
 	if root:
 		print(root.val, end=" ")
@@ -111,8 +148,7 @@ inorder(root)
 # here single node with left and right null, has height=1
 print("\n",height(root))
 
-
-
+print(isBST(root))
 
 
 
