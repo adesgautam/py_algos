@@ -21,7 +21,6 @@ def insert(root, node):
 			insert(root.left, node)
 
 def search_x(root, x):
-	
 	if not root:
 		return "value not found"
 	if root.val == x:
@@ -61,6 +60,19 @@ def delete(root, x):
 
 	return root
 
+def max(a, b):
+	if a>b:
+		return a
+	else:
+		return b
+
+def height(root):
+	if root is None:
+		return 0
+	leftheight = height(root.left)
+	rightheight = height(root.right)
+	return max(leftheight, rightheight)+1
+
 def inorder(root):
 	if root:
 		inorder(root.left)
@@ -95,6 +107,9 @@ print('\n',f)
 f = delete(root, 20)
 print(f.val)
 inorder(root)
+
+# here single node with left and right null, has height=1
+print("\n",height(root))
 
 
 
