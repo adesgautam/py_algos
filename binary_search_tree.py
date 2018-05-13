@@ -61,10 +61,9 @@ insert(root, Node(70))
 insert(root, Node(80))
 insert(root, Node(90))
 
-# inorder(root)
 inorder(root)
-f = search_x(root,100)
-print(f)
+f = search_x(root,40)
+print('\n',f)
 
 
 
