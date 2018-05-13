@@ -6,7 +6,7 @@ class Node:
 		self.right = None
 		self.val = key
 
-# Insert node in BST
+# Insert node in BST O(h)
 def insert(root, node):
 	if root is None:
 		root = node
@@ -22,7 +22,7 @@ def insert(root, node):
 		else:
 			insert(root.left, node)
 
-# Search node having x as value
+# Search node having x as value O(h)
 def search_x(root, x):
 	if root is None:
 		return "value not found"
@@ -40,7 +40,7 @@ def minnode(root):
 		current = current.left
 	return current
 
-# Delete node having x as value
+# Delete node having x as value O(h)
 def delete(root, x):
 	if root is None:
 		return root
@@ -72,7 +72,7 @@ def max(a, b):
 	else:
 		return b
 
-# Find height of BST
+# Find height of BST O(n)
 def height(root):
 	if root is None:
 		return 0
@@ -98,7 +98,7 @@ def isGreater(root, x):
 	else:
 		return False
 
-# Check is binary tree is BST
+# Check is binary tree is BST 0(n^2) (Method 1)
 def isBST(root):
 	if root is None:
 		return True
@@ -107,21 +107,42 @@ def isBST(root):
 	else:
 		return False
 
-# Inorder Traversal
+# For isBST_by_inorder function (Create inorder list of BST O(n) )
+inorderL = []
+def create_inorder_list(root):
+	if root:
+		create_inorder_list(root.left)
+		inorderL.append(root.val)
+		create_inorder_list(root.right)
+
+# For isBST_by_inorder function (Check if list is sorted)
+def checkSorted(li):
+	for i in range(len(li)-1):
+		if not li[i] <li[i+1]:
+			return False
+	return True
+
+# Check is Binary tree is BST (Method 2)
+def isBST_by_inorder(root):
+	create_inorder_list(root)
+	if checkSorted(inorderL):
+		return True
+	
+# Inorder Traversal O(n)
 def inorder(root):
 	if root:
 		inorder(root.left)
 		print(root.val, end=" ")
 		inorder(root.right)
 
-# Preorder Traversal
+# Preorder Traversal O(n)
 def preorder(root):
 	if root:
 		print(root.val, end=" ")
 		preorder(root.left)
 		preorder(root.right)
 
-# Postorder Traversal
+# Postorder Traversal O(n)
 def postorder(root):
 	if root:
 		print(root.val, end=" ")
@@ -150,6 +171,7 @@ print("\n",height(root))
 
 print(isBST(root))
 
+print(isBST_by_inorder(root))
 
 
 
