@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 
-# non-dynamic O(n2)
+# non-dynamic O(2^n)
 def matrix_chain_order(arr, i, j):
 	if i==j:
 		return 0
