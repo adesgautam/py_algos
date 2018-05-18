@@ -28,14 +28,12 @@ def matrix_chain_order(arr):
 					m[i][j] = val
 	return m[1][n-1]
 
-
 mat_dims = [1, 2, 3, 4]
 l = len(mat_dims)
 
 # min_mults = matrix_chain(mat_dims, 1, l-1)
 # print("Minimum multiplications needed: ", min_mults)
-
-
+x
 m = matrix_chain_order(mat_dims)
 print(m)
 
