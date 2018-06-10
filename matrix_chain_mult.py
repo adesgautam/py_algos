@@ -1,5 +1,5 @@
+
 import sys
-import numpy as np
 
 # non-dynamic O(2^n)
 def matrix_chain_order(arr, i, j):
@@ -26,14 +26,15 @@ def matrix_chain_order(arr):
 				val = m[i][k] + m[k+1][j] + arr[i-1]*arr[k]*arr[j]
 				if val < m[i][j]:
 					m[i][j] = val
+	print(m)
 	return m[1][n-1]
 
-mat_dims = [1, 2, 3, 4]
+mat_dims = [1, 2, 3, 4, 5]
 l = len(mat_dims)
 
 # min_mults = matrix_chain(mat_dims, 1, l-1)
 # print("Minimum multiplications needed: ", min_mults)
-x
+
 m = matrix_chain_order(mat_dims)
 print(m)
 
