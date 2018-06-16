@@ -1,16 +1,44 @@
 import numpy as np
 
+# Queue
+class Queue:
+	def __init__(self):
+		self.items = []
+		self.head = 0
+		self.tail = 0
+
+	def enqueue(self, x):
+		self.items.insert(self.tail, x)
+		self.tail+=1
+
+	def dequeue(self):
+		if self.isEmpty():
+			print("Queue is empty !!!")
+		else:
+			x = self.items[self.head]
+			self.items.pop(self.head)
+			return x
+
+	def isEmpty(self):
+		return self.items == []
+
+	def size(self):
+		return len(self.items)
+
+
 # For directed graphs (see the add_edge() function for undirected graphs)
 class Graph:
 	def __init__(self):
 		self.vertices = []
 		self.adj_matrix = np.zeros((0,0), dtype=int)
 		self.mapping = {}
+		self.rev_mapping = {}
 	
 	def update(self):
 		# update vertices
 		for i in range(0,len(self.vertices)):
 			self.mapping[self.vertices[i]] = i	
+			self.rev_mapping[i] = self.vertices[i]
 
 		# update adj_matrix
 		l = len(self.vertices)
@@ -34,33 +62,48 @@ class Graph:
 			# self.adj_matrix[self.mapping[v1]][self.mapping[v1]] = 1
 			# self.adj_matrix[self.mapping[v2]][self.mapping[v2]] = 1
 
-class Queue:
-	def __init__(self):
-		self.items = []
-		self.head = 0
-		self.tail = 0
+	def get_adjacent(self, x):
+		i = self.mapping[x]
+		adj = []
+		# rows
+		n=0
+		for j in range(len(self.vertices)):
+			if self.adj_matrix[i][j] == 1:
+				# get vertex name from reverse mapping
+				m = self.rev_mapping[j]
+				adj.append(m)
 
-	def enqueue(self, x):
-		self.items.insert(self.tail, x)
-		self.tail+=1
+		# uncomment below for undirected graphs
+		# n=0
+		# for j in range(len(self.vertices)):
+		# 	if self.adj_matrix[j][i] == 1:
+		# 		# get vertex name from reverse mapping
+		# 		m = self.rev_mapping[j]
+		# 		adj.append(m)
 
-	def dequeue(self):
-		if self.isEmpty():
-			print("Queue is empty !!!")
-		else:
-			x = self.items[self.head]
-			self.items.pop(self.head)
-			return x
+		return adj
 
-	def isEmpty(self):
-		return self.head == self.tail
+	# TODO
+	def BFS(self, x):
+		visited = {}
+		for i in self.vertices:
+			visited[i] = False
+		q = Queue()
+		q.enqueue(x)
 
-	def size(self):
-		return len(self.items)
+		visited[x] = True
 
-# TODO
-def BFS(g):
-	pass
+		while not q.isEmpty():
+			y = q.dequeue()
+			print(y, end=' ') 
+			# get adjacent nodes
+			adj = self.get_adjacent(y)
+			
+			for i in adj:
+				if visited[i] == False:
+					q.enqueue(i)
+					visited[i] = True
+
 
 g = Graph()
 g.add_vertex('A')
@@ -83,7 +126,8 @@ g.add_edge('E', 'A')
 # print adjacency matrix
 print(g.adj_matrix)
 
-BFS(g)
+# Breadh First Search
+g.BFS('A')
 
 
 
