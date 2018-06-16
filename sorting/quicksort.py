@@ -13,7 +13,6 @@ def quicksort(arr, low, high):
 def partition(arr, low , high):
 	pivot = arr[high]
 	i=low-1
-
 	for j in range(low, high):
 		if arr[j]<=pivot:
 			i+=1

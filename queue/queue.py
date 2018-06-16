@@ -18,7 +18,7 @@ class Queue:
 			return x
 
 	def isEmpty(self):
-		return self.head == self.tail
+		return self.items == []
 
 	def size(self):
 		return len(self.items)

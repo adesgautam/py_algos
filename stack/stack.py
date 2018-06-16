@@ -12,9 +12,11 @@ class Stack:
 		if self.isEmpty():
 			print("Stack is empty !!!")
 		else:
+			x = self.items[self.head]
 			self.items.pop(self.head)
-			head-=1
-
+			self.head-=1
+			return x
+			
 	def size(self):
 		return len(self.items)
 
@@ -22,11 +24,11 @@ class Stack:
 		return self.head == -1
 
 s = Stack()
-s.pop()
+x = s.pop()
 for i in range(1,6):
 	s.push(i)
 print(s.items, s.head)
-s.pop()
+x = s.pop()
 print(s.items)
 print(s.isEmpty())
 print(s.size())

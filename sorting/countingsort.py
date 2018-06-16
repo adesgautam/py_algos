@@ -2,7 +2,7 @@
 # Adesh Gautam
 
 def counting_sort(arr):
-	c = [0 for _ in range(10)]
+	c = [0 for _ in range(100)]
 	d = [0 for _ in range(max(arr))]
 	
 	# count 
@@ -16,10 +16,10 @@ def counting_sort(arr):
 		d[c[arr[i]]-1] = arr[i]
 		c[arr[i]] -= 1
 	
-	return d
+	return d[:len(arr)]
 
 # arr = [1, 4, 1, 2, 7, 5, 2]
-arr = [5,4,3,7,1,9,3,6,3]
+arr = [5,4,23,37,1,9,3,6,3]
 
 sorted_array = counting_sort(arr)
 print(sorted_array)
