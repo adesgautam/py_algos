@@ -85,50 +85,72 @@ class Graph:
 		return adj
 
 	# TODO
-	def DFS(self, x):
+	def topological_sort(self, x):
 		visited = {}
 		for i in self.vertices:
 			visited[i] = False
+		
+		# Calculate indegrees of the vertices
+		in_deg = [sum(x) for x in zip(*self.adj_matrix)]
+		
 		s = Stack()
 		s.push(x)
-
 		visited[x] = True
 
 		while not s.isEmpty():
 			y = s.pop()
-			print(y, end=' ')
+			print(y, end=' ') 
 			# get adjacent nodes
 			adj = self.get_adjacent(y)
-			
-			for i in adj:
-				if visited[i] == False:
-					s.push(i)
-					visited[i] = True
 
+			for i in adj:
+				# self.mapping[i] is used to get index of i vertex
+				if visited[i] == False:
+					# decrease indegree by 1
+					in_deg[self.mapping[i]] -= 1
+					if in_deg[self.mapping[i]] == 0:
+						s.push(i)
+						visited[i] = True
+
+		
 
 g = Graph()
-g.add_vertex('A')
-g.add_vertex('B')
-g.add_vertex('C')
-g.add_vertex('D')
-g.add_vertex('E')
+# g.add_vertex('A')
+# g.add_vertex('B')
+# g.add_vertex('C')
+# g.add_vertex('D')
+# g.add_vertex('E')
+
+g.add_vertex('1')
+g.add_vertex('2')
+g.add_vertex('3')
+g.add_vertex('4')
+g.add_vertex('5')
 
 # print vertices added
 print(g.vertices)
 
-g.add_edge('A', 'B')
-g.add_edge('B', 'C')
-g.add_edge('A', 'C')
-g.add_edge('B', 'E')
-g.add_edge('C', 'D')
-g.add_edge('D', 'C')
-g.add_edge('E', 'A')
+# Directed Acyclic Graph
+# g.add_edge('A', 'B')
+# g.add_edge('A', 'D')
+# g.add_edge('B', 'C')
+# g.add_edge('D', 'C')
+# g.add_edge('D', 'E')
+# g.add_edge('C', 'E')
+
+g.add_edge('1', '2')
+g.add_edge('1', '3')
+g.add_edge('2', '3')
+g.add_edge('2', '4')
+g.add_edge('3', '4')
+g.add_edge('3', '5')
+
 
 # print adjacency matrix
 print(g.adj_matrix)
 
 # Breadh First Search
-g.DFS('A')
+g.topological_sort('1')
 
 
 
