@@ -91,44 +91,44 @@ class Graph:
 			visited[i] = False
 		s = Stack()
 		s.push(x)
-
 		visited[x] = True
 
 		while not s.isEmpty():
 			y = s.pop()
 			print(y, end=' ')
-			# get adjacent nodes
-			adj = self.get_adjacent(y)
-			
-			for i in adj:
+			adjs = self.get_adjacent(y)
+			for i in adjs:
 				if visited[i] == False:
 					s.push(i)
 					visited[i] = True
-
+		
 
 g = Graph()
-g.add_vertex('A')
-g.add_vertex('B')
-g.add_vertex('C')
-g.add_vertex('D')
-g.add_vertex('E')
+g.add_vertex('1')
+g.add_vertex('2')
+g.add_vertex('3')
+g.add_vertex('4')
+g.add_vertex('5')
+g.add_vertex('6')
+g.add_vertex('7')
 
 # print vertices added
 print(g.vertices)
 
-g.add_edge('A', 'B')
-g.add_edge('B', 'C')
-g.add_edge('A', 'C')
-g.add_edge('B', 'E')
-g.add_edge('C', 'D')
-g.add_edge('D', 'C')
-g.add_edge('E', 'A')
+g.add_edge('1', '2')
+g.add_edge('1', '3')
+g.add_edge('2', '4')
+g.add_edge('2', '5')
+g.add_edge('3', '5')
+g.add_edge('4', '6')
+g.add_edge('5', '6')
+g.add_edge('6', '7')
 
 # print adjacency matrix
 print(g.adj_matrix)
 
 # Breadh First Search
-g.DFS('A')
+g.DFS('1')
 
 
 

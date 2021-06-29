@@ -48,6 +48,7 @@ class Stack:
 		else:
 			self.q1.dequeue()
 			self.size-=1
+			self.items = self.q1.items
 		
 
 	def size(self):

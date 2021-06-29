@@ -1,6 +1,7 @@
 
 # Insertion sort
-arr = [5,2,4,6,1,3]
+arr = [7, 1, 3, 2, 4, 5, 6]
+
 def insertion_sort(arr):
 	for j in range(1,len(arr)):
 		key = arr[j]

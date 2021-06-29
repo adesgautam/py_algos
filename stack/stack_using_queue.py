@@ -37,7 +37,6 @@ class Stack:
 		self.items = self.q1.items
 		
 	def pop(self):
-
 		for _ in range(len(self.q1.items)-1):
 			self.q1.enqueue(self.q1.dequeue())
 		self.q1.dequeue()

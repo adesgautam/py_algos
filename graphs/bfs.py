@@ -83,7 +83,6 @@ class Graph:
 
 		return adj
 
-	# TODO
 	def BFS(self, x):
 		visited = {}
 		for i in self.vertices:

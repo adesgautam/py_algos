@@ -8,26 +8,14 @@ class Node:
 
 # Insert node in BST O(h)
 def insert(root, node):
-	if root is None:
-		root = node
 
-	if root.val < node.val:
-		if root.right == None:
-			root.right = node
-		else:
-			insert(root.right, node)
-	else:
-		if root.left == None:
-			root.left = node
-		else:
-			insert(root.left, node)
 
 # Search node having x as value O(h)
 def search_x(root, x):
 	if root is None:
-		return "Value not found"
+		return "value not found"
 	if root.val == x:
-		return "Value found"
+		return "value found"
 	elif root.val > x:
 		return search_x(root.left, x)
 	else:
@@ -43,27 +31,13 @@ def minnode(root):
 # Delete node having x as value O(h)
 def delete(root, x):
 	if root is None:
-		return root
-	if root.val>x :
-		root.left = delete(root.left, x)
-	elif root.val<x :
-		root.right = delete(root.right, x)
-	else:
-		if root.left==None:     # 1 child
-			temp = root.right
-			root = None
-			return temp
-		elif root.right==None:  # 1 child
-			temp = root.left
-			root = None
-			return temp
-		
-		# 2 children
-		temp = minnode(root.right)
-		root.val = temp.val
-		root.right = delete(root.right, temp.val)
+		root = node
+	t, s = root
+	while t.next != None:
+		t = t.next
+	while s.next != None:
 
-	return root
+		
 
 # Find height of BST O(n)
 def height(root):
@@ -137,38 +111,35 @@ def preorder(root):
 # Postorder Traversal O(n)
 def postorder(root):
 	if root:
+		print(root.val, end=" ")
 		postorder(root.left)
 		postorder(root.right)
-		print(root.val, end=" ")
 
-root = Node(20)
-insert_ele = [10,30,5,7,8,3,4]
+root = Node(10)
+insert(root, Node(20))
+insert(root, Node(50))
+insert(root, Node(35))
+insert(root, Node(44))
+insert(root, Node(9))
+insert(root, Node(15))
+insert(root, Node(62))
+insert(root, Node(11))
+insert(root, Node(13))
 
-for i in insert_ele:
-	insert(root, Node(i))
-
-print('\nInorder:')
 inorder(root)
-print('\nPostorder:')
-postorder(root)
-print('\nPreorder:')
-preorder(root)
-
-print('\n\nSearch:', 3)
-f = search_x(root, 3)
-print(f)
+f = search_x(root,9)
+print('\n',f)
 
 f = delete(root, 20)
-print('\nDeleted:', 20)
-print('\nInorder:')
+print(f.val)
 inorder(root)
 
 # here single node with left and right null, has height=1
-print("\nHeight:",height(root))
+print("\n",height(root))
 
-print("\nIs BST:", isBST(root))
+print(isBST(root))
 
-print("\nIs BST by Inorder:",isBST_by_inorder(root))
+print(isBST_by_inorder(root))
 
 
 

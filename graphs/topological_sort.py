@@ -121,6 +121,7 @@ g = Graph()
 # g.add_vertex('D')
 # g.add_vertex('E')
 
+g.add_vertex('0')
 g.add_vertex('1')
 g.add_vertex('2')
 g.add_vertex('3')
@@ -138,19 +139,19 @@ print(g.vertices)
 # g.add_edge('D', 'E')
 # g.add_edge('C', 'E')
 
-g.add_edge('1', '2')
-g.add_edge('1', '3')
+g.add_edge('5', '2')
+g.add_edge('5', '0')
+g.add_edge('4', '0')
+g.add_edge('4', '1')
 g.add_edge('2', '3')
-g.add_edge('2', '4')
-g.add_edge('3', '4')
-g.add_edge('3', '5')
+g.add_edge('3', '1')
 
 
 # print adjacency matrix
 print(g.adj_matrix)
 
 # Breadh First Search
-g.topological_sort('1')
+g.topological_sort('5')
 
 
 

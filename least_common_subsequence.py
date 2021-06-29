@@ -6,7 +6,7 @@ def LCS_rec(str1, str2, l1, l2):
 	if l1==0 or l2==0:
 		return 0
 	elif str1[l1-1] == str2[l2-1]:
-		return 1+ LCS_rec(str1, str2, l1-1, l2-1)
+		return 1 + LCS_rec(str1, str2, l1-1, l2-1)
 	else:
 		return max(LCS_rec(str1, str2, l1, l2-1), LCS_rec(str1, str2, l1-1, l2))
 
